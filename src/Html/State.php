@@ -125,7 +125,7 @@ class State
     if ($this->font != $state->font) return false;
     
     // Compare urls
-    if ($this->href != $state->href) return false;
+    if ($this->getHref() != $state->getHref()) return false;
     
     return true;
   }
@@ -307,6 +307,23 @@ class State
   {
     $this->font = $font;
 
+    return $this;
+  }
+
+  /**
+   * Get the value of href
+   */
+  public function getHref()
+  {
+    return $this->href;
+  }
+
+  /**
+   * Set the value of href
+   */
+  public function setHref($href): self
+  {
+    $this->href = $href;
     return $this;
   }
 }
