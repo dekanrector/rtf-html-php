@@ -11,7 +11,7 @@ class HtmlFormatter
   private $defaultFont;
 
   // dinamic declarations fixed
-  
+
   private $previousState;
   private $states;
   /**
@@ -242,8 +242,8 @@ class HtmlFormatter
     //if(substr($group->GetType(), 0, 4) == "pict") return;
 
     // If a destination was a HYPERLINK
-    if ($this->state->href) {
-        $this->OpenTag('a','target="_blank" href='.$this->state->href);
+    if ($this->state->getHref()) {
+      $this->OpenTag('a','target="_blank" href='.$this->state->getHref());
     }
 
     // Push a new state onto the stack:
@@ -270,7 +270,7 @@ class HtmlFormatter
       }
     if ($dest[1]->word == "fldinst" && count($dest)>=2 && substr($dest[2]->text,0,10)=="HYPERLINK " ) {
       $url=substr($dest[2]->text,10);
-      $this->state->href=$url;
+      $this->state->setHref($url);
     }
   }
 
